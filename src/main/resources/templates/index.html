@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charSet="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+  <meta httpEquiv="X-UA-Compatible" content="IE=Edge" />
+  <title>Online Notes</title>
+  <link rel="shortcut icon" href="/assets/favicon.ico" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="/css/main.css" />
+</head>
+<body>
+<div id="app">
+  <input type="hidden" th:value="${note.id}" name="note_id" id="note_id"/>
+  <div id="loading" class="hidden"><i class="fa fa-refresh fa-spin" style="font-size:24px"></i></div>
+  <div id="sidebar" class="list-group">
+    <a href="/" target="_blank" class="list-group-item" title="New Note"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+<!--
+    <button class="list-group-item"><span class="glyphicon glyphicon-share-alt" aria-hidden="true"></span></button>
+-->
+    <a th:href="@{${note.id} + '/download'}" target="_blank" class="list-group-item" title="Download"><span class="glyphicon glyphicon-cloud-download" aria-hidden="true"></span></a>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <textarea placeholder="Please write notes here." id="main-textarea" th:text="${note.notes}"></textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/autosize.js/4.0.0/autosize.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.17.1/axios.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.5/lodash.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/notify/0.4.2/notify.min.js"></script>
+<script type="text/javascript" src="/js/main.js"></script>
+</body>
+</html>
