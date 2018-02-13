@@ -27,3 +27,4 @@ nbdist/
 ### custom
 *.db
 logs/
+/out/
