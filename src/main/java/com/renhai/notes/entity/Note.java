@@ -23,7 +23,7 @@ public class Note {
 	private String id;
 
 	@Lob
-	@Column(columnDefinition = "MEDIUMTEXT")
+	@Column(columnDefinition = "TEXT")
 	private String notes;
 
 	@NotNull

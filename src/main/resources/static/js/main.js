@@ -5,6 +5,9 @@
 $(function () {
   autosize($('#main-textarea'));
 
+  var originVal = $('#main-textarea').val();
+  $('#main-textarea').focus().val('').val(originVal);
+
   var postNotes = function () {
     var id = $('#note_id').val();
     var notes = $('#main-textarea').val();
@@ -20,7 +23,7 @@ $(function () {
     });
   }
 
-  $('#main-textarea').keyup(_.debounce(postNotes, 1000));
+  $('#main-textarea').keyup(_.debounce(postNotes, 500));
 
   function showLoading() {
     $('#loading').removeClass('hidden');
