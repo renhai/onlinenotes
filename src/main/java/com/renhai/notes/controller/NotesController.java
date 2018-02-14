@@ -27,6 +27,7 @@ public class NotesController {
 	@GetMapping("/")
 	public String index() throws Exception {
 		String id = noteService.generateId();
+		log.info("New notes [{}] is created.", id);
 		return "redirect:/" + id;
 	}
 
@@ -48,6 +49,7 @@ public class NotesController {
 	@ResponseBody
 	public ResponseEntity notes(@PathVariable String id, @RequestBody NoteRequestDto notes) throws Exception {
 		Note note = noteService.updateNotes(id, notes.getNotes());
+		log.info("Note [{}] is updated.", id);
 		return ResponseEntity.ok(note);
 	}
 

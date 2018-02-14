@@ -4,9 +4,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    password: ''
-    url: jdbc:h2:file:./notes
     username: sa
+    password: '1qa2ws'
+    url: jdbc:h2:file:./notes
   h2:
     console:
       enabled: true
@@ -20,5 +20,17 @@ spring:
 logging:
   file: ./logs/notes.log
   level: info
+
+endpoints:
+  actuator:
+    sensitive: false
+  shutdown:
+    enabled: true
+  enabled: false
+  info:
+    enabled: false
+management:
+  security:
+    enabled: false
 
 
