@@ -5,33 +5,20 @@
 $(function () {
   autosize($('#main-textarea'));
 
-  var originVal = $('#main-textarea').val();
-  $('#main-textarea').focus().val('').val(originVal);
-
   var postNotes = function () {
     var id = $('#note_id').val();
     var notes = $('#main-textarea').val();
-    showLoading();
     axios.post('/notes/' + id, {
       notes: notes
     }).then(function (response) {
-      hideLoading();
+      $.notify('Saved', {className: 'success', position:'top right', autoHideDelay: 1000});
     }).catch(function (error) {
       console.log(error.response);
       $.notify(error.response.data, {className: 'error', position:'bottom right'});
-      hideLoading();
     });
   }
 
-  $('#main-textarea').keyup(_.debounce(postNotes, 500));
-
-  function showLoading() {
-    $('#loading').removeClass('hidden');
-  }
-
-  function hideLoading() {
-    $('#loading').addClass('hidden');
-  }
+  $('#main-textarea').keyup(_.debounce(postNotes, 1000));
 
 });
 
